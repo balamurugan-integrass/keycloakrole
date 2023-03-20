@@ -1,0 +1,11 @@
+{
+    "name": "bala/keycloak-roles-permission",
+    "description": "This is for keycloak permission management",
+    "authors": [
+        {
+            "name": "balamurugan",
+            "email": "balamurugan@integrass.com"
+        }
+    ],
+    "require": {}
+}
