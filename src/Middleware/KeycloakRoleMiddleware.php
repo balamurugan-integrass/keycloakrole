@@ -26,6 +26,10 @@ class KeycloakRoleMiddleware
             return response()->json(['message' => 'Not Authenticated'], 400);
         }
 
+        if(!env('KEYCLOAK_APP_CLIENT')){
+            return response()->json(['message' => 'KEYCLOAK_APP_CLIENT is empty'], 500);
+        }
+
         if(Auth::hasRole(env('KEYCLOAK_APP_CLIENT'), $role)){
             return $next($request);
         }
