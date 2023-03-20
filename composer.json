@@ -1,11 +1,17 @@
 {
     "name": "bala/keycloak-roles-permission",
     "description": "This is for keycloak permission management",
+    "license": "MIT",
     "authors": [
         {
             "name": "balamurugan",
             "email": "balamurugan@integrass.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MyMiddleware\\": "src/"
+        }
+    }
 }
