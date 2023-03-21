@@ -14,5 +14,12 @@
             "App\\": "app/",
             "Bala\\KeycloakRolesPermission\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bala\\KeycloakRolesPermission\\KeycloakRolesPermissionProvider"
+            ]
+        }
     }
 }
