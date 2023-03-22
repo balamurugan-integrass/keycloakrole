@@ -8,7 +8,7 @@ Api authorization for base on user Role
 Install package with composer
 
 ```bash
-composer require bala/Keycloak-role-permission
+composer require bala/Keycloak-roles-permission
 ```
     
 Add Middleware to your kernal.php
@@ -23,11 +23,11 @@ protected $routeMiddleware = [
 Add Variable to .env
 
 ```bash
-KEYCLOAK_ROLE_CLIENT_ID="KEYCLOAK CLIENT ID"
+KEYCLOAK_ROLE_CLIENT="KEYCLOAK CLIENT ID"
 ```
 ## Usage
 
 ```javascript
-Route::get('example-protected-api', [ExampleController::class, index])->middleware('keycloak.role:role')
+Route::get('example-protected-api', [ExampleController::class, index])->middleware('keycloak.role:role name')
 ```
 
