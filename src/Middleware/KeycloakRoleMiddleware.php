@@ -18,7 +18,7 @@ class KeycloakRoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if(!$role){
+        if (!$role) {
             return response()->json(['message' => 'Add role in keycloak role middleware'], 500);
         }
 
@@ -26,15 +26,16 @@ class KeycloakRoleMiddleware
             return response()->json(['message' => 'Not Authenticated'], 400);
         }
 
-        if(!env('KEYCLOAK_APP_CLIENT')){
+        if (!env('KEYCLOAK_APP_CLIENT')) {
             return response()->json(['message' => 'KEYCLOAK_APP_CLIENT is empty'], 500);
         }
 
-        if(Auth::hasRole(env('KEYCLOAK_APP_CLIENT'), $role)){
-            return $next($request);
+        $roles = explode('|', $role);
+        foreach ($roles as $r) {
+            if (Auth::hasRole(env('KEYCLOAK_APP_CLIENT'), $r)) {
+                return $next($request);
+            }
         }
-        else{
-            return response()->json(['message' => 'Unauthorized user'], 422);
-        }
+        return response()->json(['message' => 'Unauthorized user'], 422);
     }
 }
